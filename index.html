@@ -9,50 +9,15 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <p id="city-name"></p>
     <p id="seher-timer"></p>
     <p id="iftar-timer"></p>
     <script src="./data.js"></script>
+
+    <script></script>
     <script>
       window.onload = async () => {
-        let countryCal = data.Lahore;
-        let dayData = countryCal[0];
-        let seherTime = dayData.seher.split(" AM")[0];
-        let iftarTime = dayData.iftar.split(" PM")[0];
-        let calDate = dayData.date;
-        let splitSeherTime = seherTime.split(":");
-        let splitIftarTime = iftarTime.split(":");
-        let splitDate = calDate.split(" ");
-        let seherHour = splitSeherTime[0];
-        let seherMin = splitSeherTime[1];
-        let iftarHour = +splitIftarTime[0] + 12;
-        let iftarMin = splitIftarTime[1];
-        let calDD = splitDate[0];
-        let calMM = splitDate[1];
-        let calYYYY = splitDate[2];
-
-        // console.log(seherHour);
-        // console.log(seherMin);
-
-        // console.log(iftarHour);
-        // console.log(iftarMin);
-
-        // console.log(calDD);
-        // console.log(calMM);
-        // console.log(calYYYY);
-
-        let seherTimeObj = new Date(
-          `${calMM} ${calDD}, ${calYYYY} ${seherHour}:${seherMin}`
-        );
-
-        let iftarTimeObj = new Date(
-          `${calMM} ${calDD}, ${calYYYY} ${iftarHour}:${iftarMin}`
-        );
-
-        let seherElement = document.getElementById("seher-timer");
-        let iftarElement = document.getElementById("iftar-timer");
-
-        createTimer(seherTimeObj, seherElement);
-        createTimer(iftarTimeObj, iftarElement);
+        // GETTING NEAREST CITY
 
         const getCoords = async () => {
           const pos = await new Promise((resolve, reject) => {
@@ -82,20 +47,51 @@
           let loc2 = { lat: data[key][0].lon, lon: data[key][0].lat };
           nearestArr.push({
             city: key,
-            haversine: +Haversine(+loc1.lat, +loc1.lon, +loc2.lat, +loc2.lon),
+            // haversine: +Haversine(+loc1.lat, +loc1.lon, +loc2.lat, +loc2.lon),
+            distance: +calDistance(+loc1.lat, +loc2.lat, +loc2.lon, loc1.lon),
             lat: loc2.lat,
             lon: loc2.lon,
           });
-          // console.log(loc1.lat, loc1.lon, loc2.lat, loc2.lon);
         }
 
         let nearestCity = nearestArr.reduce((prev, curr) =>
-          prev.haversine < curr.haversine ? prev : curr
+          prev.distance < curr.distance ? prev : curr
         );
 
-        console.log(nearestArr);
+        document.getElementById("city-name").innerHTML =
+          "Showing timer for '" + nearestCity.city + "'";
 
-        console.log(nearestCity);
+        // CREATING THE ACTUAL TIMER
+
+        let countryCal = data[nearestCity.city];
+        let dayData = countryCal[0];
+        let seherTime = dayData.seher.split(" AM")[0];
+        let iftarTime = dayData.iftar.split(" PM")[0];
+        let calDate = dayData.date;
+        let splitSeherTime = seherTime.split(":");
+        let splitIftarTime = iftarTime.split(":");
+        let splitDate = calDate.split(" ");
+        let seherHour = splitSeherTime[0];
+        let seherMin = splitSeherTime[1];
+        let iftarHour = +splitIftarTime[0] + 12;
+        let iftarMin = splitIftarTime[1];
+        let calDD = splitDate[0];
+        let calMM = splitDate[1];
+        let calYYYY = splitDate[2];
+
+        let seherTimeObj = new Date(
+          `${calMM} ${calDD}, ${calYYYY} ${seherHour}:${seherMin}`
+        );
+
+        let iftarTimeObj = new Date(
+          `${calMM} ${calDD}, ${calYYYY} ${iftarHour}:${iftarMin}`
+        );
+
+        let seherElement = document.getElementById("seher-timer");
+        let iftarElement = document.getElementById("iftar-timer");
+
+        createTimer(seherTimeObj, seherElement);
+        createTimer(iftarTimeObj, iftarElement);
 
         function createTimer(time, element) {
           // Set the date we're counting down to
@@ -123,18 +119,17 @@
             element.innerHTML =
               days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
+            // 15 MIN FUNCTIONALITY
+
             // if (minutes > 14) {
             //   element.style.display = "none";
             // } else {
             //   element.style.display = "block";
             // }
 
-            // If the count down is over, write some text
             if (distance < 0) {
               clearInterval(timerInterval);
               element.style.display = "none";
-              console.log(element.style.display);
-              console.log(element);
             }
           }, 1000);
         }
@@ -144,21 +139,44 @@
           return radians;
         }
 
-        function Haversine(lat1, lon1, lat2, lon2) {
-          deltaLat = lat2 - lat1;
-          deltaLon = lon2 - lon1;
-          earthRadius = 3959; // in miles 6371 in meters.
-          alpha = deltaLat / 2;
-          beta = deltaLon / 2;
-          a =
-            Math.sin(deg2rad(alpha)) * Math.sin(deg2rad(alpha)) +
-            Math.cos(deg2rad(lat1)) *
-              Math.cos(deg2rad(lat2)) *
-              Math.sin(deg2rad(beta)) *
-              Math.sin(deg2rad(beta));
-          c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-          distance = earthRadius * c;
-          return distance.toFixed(2);
+        // function Haversine(lat1, lon1, lat2, lon2) {
+        //   deltaLat = lat2 - lat1;
+        //   deltaLon = lon2 - lon1;
+        //   earthRadius = 3959; // in miles 6371 in meters.
+        //   alpha = deltaLat / 2;
+        //   beta = deltaLon / 2;
+        //   a =
+        //     Math.sin(deg2rad(alpha)) * Math.sin(deg2rad(alpha)) +
+        //     Math.cos(deg2rad(lat1)) *
+        //       Math.cos(deg2rad(lat2)) *
+        //       Math.sin(deg2rad(beta)) *
+        //       Math.sin(deg2rad(beta));
+        //   c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        //   distance = earthRadius * c;
+        //   return distance.toFixed(2);
+        // }
+
+        function calDistance(lat1, lon1, lat2, lon2, unit) {
+          var radlat1 = (Math.PI * lat1) / 180;
+          var radlat2 = (Math.PI * lat2) / 180;
+          var theta = lon1 - lon2;
+          var radtheta = (Math.PI * theta) / 180;
+          var dist =
+            Math.sin(radlat1) * Math.sin(radlat2) +
+            Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+          if (dist > 1) {
+            dist = 1;
+          }
+          dist = Math.acos(dist);
+          dist = (dist * 180) / Math.PI;
+          dist = dist * 60 * 1.1515;
+          if (unit == "K") {
+            dist = dist * 1.609344;
+          }
+          if (unit == "N") {
+            dist = dist * 0.8684;
+          }
+          return dist;
         }
       };
     </script>
