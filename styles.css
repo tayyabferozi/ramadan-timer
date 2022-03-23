@@ -1,5 +1,6 @@
 * {
   font-family: sans-serif;
+  color: #fff;
 }
 
 body {
@@ -7,7 +8,6 @@ body {
 
 #city-timer {
   display: inline-block;
-  background-color: #00ecb9;
   padding: 1rem;
   margin-top: 0;
 }
@@ -24,12 +24,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f7cecc;
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid red;
+  background: #2c2e33;
   padding: 0 0.75rem;
+  border-radius: 6px;
 }
 
 .timer-wrapper > div {
@@ -42,7 +42,7 @@ body {
 }
 
 .timer {
-  background-color: #00ecb9;
+  /* background-color: #00ecb9; */
   padding: 1rem;
   font-family: sans-serif;
   color: #fff;
@@ -53,20 +53,22 @@ body {
   margin: 1rem 0;
   display: flex;
   justify-content: space-between;
-  border: 1px solid green;
+  /* border: 1px solid green; */
 }
 
 .timer > div {
   padding: 10px;
   border-radius: 3px;
-  background: #00bf96;
+  background: #2c2e33;
   display: inline-block;
+  border: 1px solid #fff;
+  border-radius: 10px;
 }
 
 .timer div > span {
   padding: 8px 15px;
   border-radius: 3px;
-  background: #00816a;
+  /* background: #00816a; */
   display: inline-block;
 }
 
