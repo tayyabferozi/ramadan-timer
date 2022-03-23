@@ -1,6 +1,8 @@
 let data = {
   Lahore: [
     {
+      lat: 31.4832209,
+      lon: 74.0541978,
       seher: "04:27 AM",
       iftar: "6:24 PM",
       date: "02 Apr 2022",
@@ -153,6 +155,8 @@ let data = {
   ],
   Karachi: [
     {
+      lat: 25.1933895,
+      lon: 66.5949873,
       seher: "05:05 AM",
       iftar: "6:49 PM",
       date: "02 Apr 2022",
@@ -305,6 +309,8 @@ let data = {
   ],
   Islamabad: [
     {
+      lat: 33.6163232,
+      lon: 72.9460225,
       seher: "04:29 AM",
       iftar: "6:30 PM",
       date: "02 Apr 2022",
@@ -457,6 +463,8 @@ let data = {
   ],
   Rawalpindi: [
     {
+      lat: 33.5617218,
+      lon: 72.881121,
       seher: "04:29 AM",
       iftar: "6:30 PM",
       date: "02 Apr 2022",
@@ -609,6 +617,8 @@ let data = {
   ],
   Peshawar: [
     {
+      lat: 33.57142418893732,
+      lon: 73.01949359447279,
       seher: "04:34 AM",
       iftar: "6:36 PM",
       date: "02 Apr 2022",
@@ -761,6 +771,8 @@ let data = {
   ],
   Faisalabad: [
     {
+      lat: 31.4237883,
+      lon: 72.9492153,
       seher: "04:32 AM",
       iftar: "6:29 PM",
       date: "02 Apr 2022",
@@ -913,6 +925,8 @@ let data = {
   ],
   Multan: [
     {
+      lat: 30.1814786,
+      lon: 71.3345725,
       seher: "04:40 AM",
       iftar: "6:34 PM",
       date: "02 Apr 2022",
@@ -1065,6 +1079,8 @@ let data = {
   ],
   Hyderabad: [
     {
+      lat: 25.3961008,
+      lon: 68.2080907,
       seher: "04:59 AM",
       iftar: "6:44 PM",
       date: "02 Apr 2022",
@@ -1217,6 +1233,8 @@ let data = {
   ],
   Gujrat: [
     {
+      lat: 22.4064215,
+      lon: 69.0751656,
       seher: "04:27 AM",
       iftar: "6:25 PM",
       date: "02 Apr 2022",
@@ -1369,6 +1387,8 @@ let data = {
   ],
   Quetta: [
     {
+      lat: 30.1800523,
+      lon: 66.8786029,
       seher: "04:58 AM",
       iftar: "6:52 PM",
       date: "02 Apr 2022",
@@ -1521,6 +1541,8 @@ let data = {
   ],
   Sialkot: [
     {
+      lat: 32.4835244,
+      lon: 74.4723577,
       seher: "04:25 AM",
       iftar: "6:23 PM",
       date: "02 Apr 2022",
@@ -1673,6 +1695,8 @@ let data = {
   ],
   Sargodha: [
     {
+      lat: 32.0550863,
+      lon: 72.6269927,
       seher: "04:33 AM",
       iftar: "6:31 PM",
       date: "02 Apr 2022",
@@ -1825,6 +1849,8 @@ let data = {
   ],
   Gujranwala: [
     {
+      lat: 32.1582524,
+      lon: 74.0245271,
       seher: "04:27 AM",
       iftar: "6:25 PM",
       date: "02 Apr 2022",
@@ -1977,6 +2003,8 @@ let data = {
   ],
   Mianwali: [
     {
+      lat: 32.5829516,
+      lon: 71.5203158,
       seher: "04:37 AM",
       iftar: "6:35 PM",
       date: "02 Apr 2022",
@@ -2129,6 +2157,8 @@ let data = {
   ],
   Chakwal: [
     {
+      lat: 32.9307491,
+      lon: 72.8083622,
       seher: "04:31 AM",
       iftar: "6:30 PM",
       date: "02 Apr 2022",
@@ -2281,6 +2311,8 @@ let data = {
   ],
   "Dera Ghazi Khan": [
     {
+      lat: 30.0442699,
+      lon: 70.6164786,
       seher: "04:44 AM",
       iftar: "6:38 PM",
       date: "02 Apr 2022",
@@ -2433,6 +2465,8 @@ let data = {
   ],
   Mardan: [
     {
+      lat: 34.1894438,
+      lon: 71.9688465,
       seher: "04:32 AM",
       iftar: "6:34 PM",
       date: "02 Apr 2022",
@@ -2585,6 +2619,8 @@ let data = {
   ],
   Sahiwal: [
     {
+      lat: 30.5721614,
+      lon: 72.610393,
       seher: "04:33 AM",
       iftar: "6:28 PM",
       date: "02 Apr 2022",
@@ -2737,6 +2773,8 @@ let data = {
   ],
   Jhelum: [
     {
+      lat: 32.9308109,
+      lon: 73.6808981,
       seher: "04:27 AM",
       iftar: "6:27 PM",
       date: "02 Apr 2022",
@@ -2889,6 +2927,8 @@ let data = {
   ],
   Attock: [
     {
+      lat: 33.7738791,
+      lon: 72.3353657,
       seher: "04:32 AM",
       iftar: "6:33 PM",
       date: "02 Apr 2022",
@@ -3041,6 +3081,8 @@ let data = {
   ],
   Arifwala: [
     {
+      lat: 30.2899417,
+      lon: 73.04346,
       seher: "04:34 AM",
       iftar: "6:28 PM",
       date: "02 Apr 2022",
@@ -3193,6 +3235,8 @@ let data = {
   ],
   Bagh: [
     {
+      lat: 34.0092762,
+      lon: 73.5965485,
       seher: "04:27 AM",
       iftar: "6:29 PM",
       date: "02 Apr 2022",
@@ -3345,6 +3389,8 @@ let data = {
   ],
   Bahawalnagar: [
     {
+      lat: 29.9964568,
+      lon: 73.2167165,
       seher: "04:34 AM",
       iftar: "6:27 PM",
       date: "02 Apr 2022",
@@ -3497,6 +3543,8 @@ let data = {
   ],
   Bahawalpur: [
     {
+      lat: 29.3770716,
+      lon: 71.6199717,
       seher: "04:41 AM",
       iftar: "6:33 PM",
       date: "02 Apr 2022",
@@ -3649,6 +3697,8 @@ let data = {
   ],
   Bannu: [
     {
+      lat: 32.9649791,
+      lon: 70.5599582,
       seher: "04:40 AM",
       iftar: "6:39 PM",
       date: "02 Apr 2022",
@@ -3801,6 +3851,8 @@ let data = {
   ],
   Bhimber: [
     {
+      lat: 32.9796394,
+      lon: 74.0607922,
       seher: "04:26 AM",
       iftar: "6:25 PM",
       date: "02 Apr 2022",
@@ -3953,6 +4005,8 @@ let data = {
   ],
   Burewala: [
     {
+      lat: 30.1576711,
+      lon: 72.6509636,
       seher: "04:36 AM",
       iftar: "6:29 PM",
       date: "02 Apr 2022",
@@ -4105,6 +4159,8 @@ let data = {
   ],
   Charsadda: [
     {
+      lat: 34.1683282,
+      lon: 71.7128047,
       seher: "04:33 AM",
       iftar: "6:35 PM",
       date: "02 Apr 2022",
@@ -4257,6 +4313,8 @@ let data = {
   ],
   "Chatta Bakhtawar": [
     {
+      lat: 33.6643619,
+      lon: 73.1494082,
       seher: "04:28 AM",
       iftar: "6:29 PM",
       date: "02 Apr 2022",
@@ -4409,6 +4467,8 @@ let data = {
   ],
   Chawinda: [
     {
+      lat: 32.3436836,
+      lon: 74.700788,
       seher: "04:24 AM",
       iftar: "6:23 PM",
       date: "02 Apr 2022",
@@ -4561,6 +4621,8 @@ let data = {
   ],
   Chichawatni: [
     {
+      lat: 30.5410714,
+      lon: 72.6574814,
       seher: "04:35 AM",
       iftar: "6:30 PM",
       date: "02 Apr 2022",
@@ -4713,6 +4775,8 @@ let data = {
   ],
   Chiniot: [
     {
+      lat: 31.7195209,
+      lon: 72.9494654,
       seher: "04:32 AM",
       iftar: "6:29 PM",
       date: "02 Apr 2022",
@@ -4865,6 +4929,8 @@ let data = {
   ],
   Chunian: [
     {
+      lat: 30.9732398,
+      lon: 73.9330124,
       seher: "04:29 AM",
       iftar: "6:25 PM",
       date: "02 Apr 2022",
@@ -5017,6 +5083,8 @@ let data = {
   ],
   Dadu: [
     {
+      lat: 26.7336694,
+      lon: 67.7472307,
       seher: "05:00 AM",
       iftar: "6:47 PM",
       date: "02 Apr 2022",
@@ -5169,6 +5237,8 @@ let data = {
   ],
   Daska: [
     {
+      lat: 32.3300058,
+      lon: 74.3297645,
       seher: "04:26 AM",
       iftar: "6:24 PM",
       date: "02 Apr 2022",
@@ -5321,6 +5391,8 @@ let data = {
   ],
   "Dera Allah Yar": [
     {
+      lat: 28.3737472,
+      lon: 68.3323751,
       seher: "04:55 AM",
       iftar: "6:46 PM",
       date: "02 Apr 2022",
@@ -5473,6 +5545,8 @@ let data = {
   ],
   "Dera Ismail Khan": [
     {
+      lat: 31.85563,
+      lon: 70.8236041,
       seher: "04:40 AM",
       iftar: "6:37 PM",
       date: "02 Apr 2022",
@@ -5625,6 +5699,8 @@ let data = {
   ],
   Fatehpur: [
     {
+      lat: 31.1764919,
+      lon: 71.1992222,
       seher: "04:27 AM",
       iftar: "6:27 PM",
       date: "02 Apr 2022",
@@ -5777,6 +5853,8 @@ let data = {
   ],
   Ghotki: [
     {
+      lat: 28.028422,
+      lon: 69.3003839,
       seher: "04:52 AM",
       iftar: "6:42 PM",
       date: "02 Apr 2022",
@@ -5929,6 +6007,8 @@ let data = {
   ],
   Gilgit: [
     {
+      lat: 35.7809755,
+      lon: 72.9233417,
       seher: "04:20 AM",
       iftar: "6:26 PM",
       date: "02 Apr 2022",
@@ -6081,6 +6161,8 @@ let data = {
   ],
   Gojra: [
     {
+      lat: 31.1463241,
+      lon: 72.6465965,
       seher: "04:34 AM",
       iftar: "6:30 PM",
       date: "02 Apr 2022",
@@ -6233,6 +6315,8 @@ let data = {
   ],
   Gwadar: [
     {
+      lat: 25.1946237,
+      lon: 62.2539392,
       seher: "05:24 AM",
       iftar: "7:08 PM",
       date: "02 Apr 2022",
@@ -6385,6 +6469,8 @@ let data = {
   ],
   Hafizabad: [
     {
+      lat: 32.0750159,
+      lon: 73.6501923,
       seher: "04:29 AM",
       iftar: "6:26 PM",
       date: "02 Apr 2022",
@@ -6537,6 +6623,8 @@ let data = {
   ],
   Hala: [
     {
+      lat: 25.7958961,
+      lon: 68.3809777,
       seher: "04:58 AM",
       iftar: "6:44 PM",
       date: "02 Apr 2022",

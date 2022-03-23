@@ -9,72 +9,158 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <p id="demo"></p>
+    <p id="seher-timer"></p>
+    <p id="iftar-timer"></p>
     <script src="./data.js"></script>
     <script>
-      let countryCal = data.Lahore;
-      let dayData = countryCal[0];
-      let seherTime = dayData.seher.split(" AM")[0];
-      let iftarTime = dayData.iftar.split(" PM")[0];
-      let calDate = dayData.date;
-      let splitSeherTime = seherTime.split(":");
-      let splitIftarTime = iftarTime.split(":");
-      let splitDate = calDate.split(" ");
-      let seherHour = splitSeherTime[0];
-      let seherMin = splitSeherTime[1];
-      let iftarHour = splitIftarTime[0];
-      let iftarMin = splitIftarTime[1];
-      let calDD = splitDate[0];
-      let calMM = splitDate[1];
-      let calYYYY = splitDate[2];
+      window.onload = async () => {
+        let countryCal = data.Lahore;
+        let dayData = countryCal[0];
+        let seherTime = dayData.seher.split(" AM")[0];
+        let iftarTime = dayData.iftar.split(" PM")[0];
+        let calDate = dayData.date;
+        let splitSeherTime = seherTime.split(":");
+        let splitIftarTime = iftarTime.split(":");
+        let splitDate = calDate.split(" ");
+        let seherHour = splitSeherTime[0];
+        let seherMin = splitSeherTime[1];
+        let iftarHour = +splitIftarTime[0] + 12;
+        let iftarMin = splitIftarTime[1];
+        let calDD = splitDate[0];
+        let calMM = splitDate[1];
+        let calYYYY = splitDate[2];
 
-      // console.log(seherHour);
-      // console.log(seherMin);
+        // console.log(seherHour);
+        // console.log(seherMin);
 
-      // console.log(iftarHour);
-      // console.log(iftarMin);
+        // console.log(iftarHour);
+        // console.log(iftarMin);
 
-      // console.log(calDD);
-      // console.log(calMM);
-      // console.log(calYYYY);
+        // console.log(calDD);
+        // console.log(calMM);
+        // console.log(calYYYY);
 
-      let seherTimeObj = new Date(
-        `${calMM} ${calDD}, ${calYYYY} ${seherHour}:${seherMin}`
-      );
-
-      let iftarTimeObj = new Date(
-        `${calMM} ${calDD}, ${calYYYY} ${iftarHour}:${iftarMin}`
-      );
-
-      // Set the date we're counting down to
-      var countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
-
-      // Update the count down every 1 second
-      var x = setInterval(function () {
-        // Get today's date and time
-        var now = new Date().getTime();
-
-        // Find the distance between now and the count down date
-        var distance = countDownDate - now;
-
-        // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        let seherTimeObj = new Date(
+          `${calMM} ${calDD}, ${calYYYY} ${seherHour}:${seherMin}`
         );
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        // Display the result in the element with id="demo"
-        document.getElementById("demo").innerHTML =
-          days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+        let iftarTimeObj = new Date(
+          `${calMM} ${calDD}, ${calYYYY} ${iftarHour}:${iftarMin}`
+        );
 
-        // If the count down is finished, write some text
-        if (distance < 0) {
-          clearInterval(x);
-          document.getElementById("demo").innerHTML = "EXPIRED";
+        let seherElement = document.getElementById("seher-timer");
+        let iftarElement = document.getElementById("iftar-timer");
+
+        createTimer(seherTimeObj, seherElement);
+        createTimer(iftarTimeObj, iftarElement);
+
+        const getCoords = async () => {
+          const pos = await new Promise((resolve, reject) => {
+            navigator.geolocation.getCurrentPosition(resolve, reject);
+          });
+
+          return {
+            lon: pos.coords.longitude,
+            lat: pos.coords.latitude,
+          };
+        };
+
+        let nearestArr = [];
+
+        let loc1 = await getCoords();
+
+        if (!navigator.geolocation) {
+          alert("Geolocation is not supported by this browser.");
         }
-      }, 1000);
+
+        function showPosition(position) {
+          lat2 = position.coords.latitude;
+          lon2 = position.coords.longitude;
+        }
+
+        for (const key in data) {
+          let loc2 = { lat: data[key][0].lon, lon: data[key][0].lat };
+          nearestArr.push({
+            city: key,
+            haversine: +Haversine(+loc1.lat, +loc1.lon, +loc2.lat, +loc2.lon),
+            lat: loc2.lat,
+            lon: loc2.lon,
+          });
+          // console.log(loc1.lat, loc1.lon, loc2.lat, loc2.lon);
+        }
+
+        let nearestCity = nearestArr.reduce((prev, curr) =>
+          prev.haversine < curr.haversine ? prev : curr
+        );
+
+        console.log(nearestArr);
+
+        console.log(nearestCity);
+
+        function createTimer(time, element) {
+          // Set the date we're counting down to
+          let countDownDate = new Date(time).getTime();
+
+          // Update the count down every 1 second
+          let timerInterval = setInterval(function () {
+            // Get today's date and time
+            let now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            let distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            let hours = Math.floor(
+              (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+            );
+            let minutes = Math.floor(
+              (distance % (1000 * 60 * 60)) / (1000 * 60)
+            );
+            let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Output the result in an element with id="demo"
+            element.innerHTML =
+              days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+            // if (minutes > 14) {
+            //   element.style.display = "none";
+            // } else {
+            //   element.style.display = "block";
+            // }
+
+            // If the count down is over, write some text
+            if (distance < 0) {
+              clearInterval(timerInterval);
+              element.style.display = "none";
+              console.log(element.style.display);
+              console.log(element);
+            }
+          }, 1000);
+        }
+
+        function deg2rad(degrees) {
+          radians = degrees * (Math.PI / 180);
+          return radians;
+        }
+
+        function Haversine(lat1, lon1, lat2, lon2) {
+          deltaLat = lat2 - lat1;
+          deltaLon = lon2 - lon1;
+          earthRadius = 3959; // in miles 6371 in meters.
+          alpha = deltaLat / 2;
+          beta = deltaLon / 2;
+          a =
+            Math.sin(deg2rad(alpha)) * Math.sin(deg2rad(alpha)) +
+            Math.cos(deg2rad(lat1)) *
+              Math.cos(deg2rad(lat2)) *
+              Math.sin(deg2rad(beta)) *
+              Math.sin(deg2rad(beta));
+          c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+          distance = earthRadius * c;
+          return distance.toFixed(2);
+        }
+      };
     </script>
   </body>
 </html>
