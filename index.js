@@ -75,12 +75,11 @@ window.onload = async () => {
   // createTimer(iftarTimeObj, iftarElement);
 
   setInterval(function () {
-    let now = new Date().getTime();
-    let [, hours, minutes, seconds] = getParsedTime(now);
+    let now = new Date();
     document.getElementById(
       "city-timer"
-    ).innerHTML = `${hours}: ${minutes}: ${seconds}`;
-  });
+    ).innerHTML = `${now.getHours()}: ${now.getMinutes()}: ${now.getSeconds()}`;
+  }, 1000);
 
   function getParsedTime(time) {
     let days = Math.floor(time / (1000 * 60 * 60 * 24));
