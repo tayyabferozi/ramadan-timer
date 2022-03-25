@@ -151,11 +151,23 @@ window.onload = async () => {
       //   element.style.display = "block";
       // }
 
+      // TEMPORARY LINES
+
       if (seherElement.style.display !== "none") {
         iftarElement.style.display = "none";
       } else {
         iftarElement.style.display = "block";
       }
+
+      if (iftarElement.style.display !== "none") {
+        seherElement.style.display = "none";
+      } else {
+        seherElement.style.display = "block";
+      }
+
+      // TEMPORARY LINES END
+
+      // STOP TIMER WHEN TIME IS PASSED
 
       if (distance < 0) {
         clearInterval(timerInterval);
@@ -163,6 +175,8 @@ window.onload = async () => {
       }
     }, 1000);
   }
+
+  // TO CALCULATE DISTANCE BETWEEN TWO POINTS ON EARTH
 
   function calDistance(lat1, lon1, lat2, lon2, unit) {
     var radlat1 = (Math.PI * lat1) / 180;
