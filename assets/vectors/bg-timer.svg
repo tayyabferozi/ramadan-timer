@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="298" height="298" viewBox="0 0 298 298">
+  <g id="Group_222" data-name="Group 222" transform="translate(-46 -317)">
+    <g id="Section" transform="translate(46.356 317.356)">
+      <circle id="Oval" cx="149" cy="149" r="149" transform="translate(-0.356 -0.356)" fill="#122a47"/>
+      <circle id="Oval-2" data-name="Oval" cx="122" cy="122" r="122" transform="translate(26.644 26.644)" fill="#24456e"/>
+      <circle id="Oval-3" data-name="Oval" cx="108" cy="108" r="108" transform="translate(40.644 40.644)" fill="#2a4f7d"/>
+      <circle id="Oval-4" data-name="Oval" cx="95" cy="95" r="95" transform="translate(53.644 53.644)" fill="#3b659a"/>
+      <circle id="Oval-5" data-name="Oval" cx="81" cy="81" r="81" transform="translate(67.644 67.644)" fill="#051222"/>
+      <g id="Oval-6" data-name="Oval" transform="translate(9.644 9.644)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="10" stroke-dasharray="0 19">
+        <circle cx="139" cy="139" r="139" stroke="none"/>
+        <circle cx="139" cy="139" r="134" fill="none"/>
+      </g>
+    </g>
+  </g>
+</svg>

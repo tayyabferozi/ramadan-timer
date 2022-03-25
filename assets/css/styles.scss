@@ -1,0 +1,194 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+$color1: #051222;
+$color2: #ffe9a6;
+
+* {
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+}
+
+.main {
+  background-color: $color1;
+
+  .container {
+    padding: 65px 36px;
+    position: relative;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+
+    @media screen and (max-width: 360px) {
+      padding-top: 50px;
+    }
+
+    .bg,
+    .lights {
+      position: absolute;
+    }
+
+    .lights {
+      top: -91px;
+      right: 36px;
+
+      @media screen and (max-width: 360px) {
+        top: -40px;
+      }
+    }
+
+    & > .bg {
+      // width: calc(100% + 60px);
+      width: 450px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .bg.top {
+      top: -130px;
+    }
+
+    .bg.bottom {
+      bottom: -260px;
+    }
+
+    h1 {
+      font-size: 42px;
+      color: $color2;
+      max-width: 210px;
+      line-height: 1;
+    }
+
+    #city-name {
+      font-size: 20px;
+      margin-top: 0.5rem;
+    }
+
+    .timer {
+      margin: 140px 0 170px;
+      position: relative;
+      min-height: 298px;
+      // min-width: 298px;
+
+      @media screen and (max-width: 360px) {
+        margin-top: 160px;
+      }
+
+      .bg,
+      .text {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .bg {
+        max-width: 298px;
+      }
+
+      .text {
+        width: 130px;
+        text-align: center;
+
+        .timer-title {
+          font-size: 10px;
+          opacity: 0.5;
+          max-width: 110px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        #city-timer {
+          font-size: 30px;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+// #city-timer {
+//   padding: 1rem 0;
+//   margin-top: 0;
+//   text-align: left;
+// }
+
+// .title > small {
+//   font-size: 11px;
+// }
+
+// .title {
+//   margin: 0 0 0.5rem;
+//   text-align: left;
+// }
+
+// .timer-wrapper {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   max-width: 500px;
+//   margin-left: auto;
+//   margin-right: auto;
+//   background: #2c2e33;
+//   padding: 1.75rem;
+//   border-radius: 6px;
+// }
+
+// .timer-wrapper > div {
+//   flex-grow: 1;
+//   text-align: center;
+// }
+
+// .timer-wrapper > div.right {
+//   width: 300px;
+// }
+
+// .timer-wrapper > .timer-container {
+//   margin: 1rem 0;
+//   padding: 1rem;
+// }
+
+// .timer {
+//   /* background-color: #00ecb9; */
+//   font-family: sans-serif;
+//   color: #fff;
+//   /* display: inline-block; */
+//   font-weight: 100;
+//   text-align: center;
+//   font-size: 30px;
+//   display: flex;
+//   justify-content: space-between;
+//   /* border: 1px solid green; */
+// }
+
+// .timer-container .line {
+//   font-size: 12px;
+//   text-align: right;
+//   margin: 1rem 0;
+// }
+
+// .timer > div {
+//   padding: 10px;
+//   border-radius: 3px;
+//   background: #2c2e33;
+//   display: inline-block;
+//   border: 1px solid #fff;
+//   border-radius: 10px;
+// }
+
+// .timer div > span {
+//   padding: 8px 15px;
+//   border-radius: 3px;
+//   /* background: #00816a; */
+//   display: inline-block;
+// }
+
+// .smalltext {
+//   padding-top: 5px;
+//   font-size: 12px;
+// }

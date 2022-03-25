@@ -88,11 +88,14 @@ window.onload = async () => {
     `${calMM} ${calDD}, ${calYYYY} ${iftarHour}:${iftarMin}`
   );
 
-  let seherElement = document.getElementById("seher-timer");
-  let iftarElement = document.getElementById("iftar-timer");
+  // let seherElement = document.getElementById("seher-timer");
+  // let iftarElement = document.getElementById("iftar-timer");
 
-  createTimer(seherTimeObj, seherElement, "REMAINING FOR SEHER");
-  createTimer(iftarTimeObj, iftarElement, "REMAINING FOR IFTAR");
+  let seherElement = document.querySelector(".timer-title.seher");
+  let iftarElement = document.querySelector(".timer-title.iftar");
+
+  createTimer(seherTimeObj, seherElement, "seher");
+  createTimer(iftarTimeObj, iftarElement, "iftar");
 
   setInterval(function () {
     let now = new Date();
@@ -100,6 +103,14 @@ window.onload = async () => {
       "city-timer"
     ).innerHTML = `${now.getHours()}: ${now.getMinutes()}: ${now.getSeconds()}`;
   }, 1000);
+
+  // setInterval(function () {
+  //   if (seherElement.style.display !== "none") {
+  //     seherElement.style.display = "none";
+  //   } else {
+  //     seherElement.style.display = "block";
+  //   }
+  // }, 0);
 
   function getParsedTime(time) {
     let days = Math.floor(time / (1000 * 60 * 60 * 24));
@@ -127,24 +138,8 @@ window.onload = async () => {
       // Output the result in an element with id="demo"
       // element.innerHTML =
       //   days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-      element.innerHTML = `
-      <div class='timer'>
-        <div>
-          <span class='hours'>${hours}</span>
-          <div class='smalltext'>Hours</div>
-        </div>
-        <div>
-          <span class='hours'>${minutes}</span>
-          <div class='smalltext'>minutes</div>
-        </div>
-        <div>
-          <span class='hours'>${seconds}</span>
-          <div class='smalltext'>seconds</div>
-        </div>
-      </div>
-      <div class='line'>${text}</div>
-      `;
-      days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+      element.innerHTML = `${hours} hr ${minutes} min ${seconds} sec remaining for ${text}`;
+      // days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
       // 15 MIN FUNCTIONALITY
 
@@ -155,6 +150,12 @@ window.onload = async () => {
       // } else {
       //   element.style.display = "block";
       // }
+
+      if (seherElement.style.display !== "none") {
+        iftarElement.style.display = "none";
+      } else {
+        iftarElement.style.display = "block";
+      }
 
       if (distance < 0) {
         clearInterval(timerInterval);

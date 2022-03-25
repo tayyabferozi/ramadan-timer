@@ -4,12 +4,44 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Ramadan Timer</title>
 
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./assets/css/styles.css" />
   </head>
   <body>
-    <div class="timer-wrapper">
+    <div class="main">
+      <div class="container">
+        <img src="./assets/vectors/bg-top.svg" class="bg top" alt="bg" />
+        <img src="./assets/vectors/bg-bottom.svg" class="bg bottom" alt="bg" />
+        <img src="./assets/vectors/lights.svg" class="lights" alt="lights" />
+
+        <h1>Ramadan Kareem</h1>
+        <div id="city-name"></div>
+
+        <div class="timer">
+          <img class="bg" src="./assets/vectors/bg-timer.svg" alt="timer" />
+          <div class="text">
+            <div class="timer-title seher">
+              <div class="min"></div>
+
+              <div class="sec"></div>
+
+              <div class="seher-iftar"></div>
+            </div>
+            <div class="timer-title iftar">
+              <div class="min"></div>
+              min
+              <div class="sec"></div>
+              sec remaining for
+              <div class="seher-iftar"></div>
+            </div>
+            <div id="city-timer"></div>
+            <img src="./assets/vectors/sunset.svg" alt="sunset" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="timer-wrapper">
       <div>
         <h3 class="title">
           <span id="city-name"></span> <small>CURRENT TIME</small>
@@ -21,9 +53,9 @@
 
         <div class="timer-container" id="iftar-timer"></div>
       </div>
-    </div>
-    <script src="./data.js"></script>
-    <script src="./data2.js"></script>
-    <script src="./index.js"></script>
+    </div> -->
+    <script src="./assets/js/data.js"></script>
+    <script src="./assets/js/data2.js"></script>
+    <script src="./assets/js/index.js"></script>
   </body>
 </html>

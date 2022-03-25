@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  background-color: #051222;
+}
+
+.main .container {
+  padding: 65px 36px;
+  position: relative;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 360px) {
+  .main .container {
+    padding-top: 50px;
+  }
+}
+
+.main .container .bg,
+.main .container .lights {
+  position: absolute;
+}
+
+.main .container .lights {
+  top: -91px;
+  right: 36px;
+}
+
+@media screen and (max-width: 360px) {
+  .main .container .lights {
+    top: -40px;
+  }
+}
+
+.main .container > .bg {
+  width: 450px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.main .container .bg.top {
+  top: -130px;
+}
+
+.main .container .bg.bottom {
+  bottom: -260px;
+}
+
+.main .container h1 {
+  font-size: 42px;
+  color: #ffe9a6;
+  max-width: 210px;
+  line-height: 1;
+}
+
+.main .container #city-name {
+  font-size: 20px;
+  margin-top: 0.5rem;
+}
+
+.main .container .timer {
+  margin: 140px 0 170px;
+  position: relative;
+  min-height: 298px;
+}
+
+@media screen and (max-width: 360px) {
+  .main .container .timer {
+    margin-top: 160px;
+  }
+}
+
+.main .container .timer .bg,
+.main .container .timer .text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.main .container .timer .bg {
+  max-width: 298px;
+}
+
+.main .container .timer .text {
+  width: 130px;
+  text-align: center;
+}
+
+.main .container .timer .text .timer-title {
+  font-size: 10px;
+  opacity: 0.5;
+  max-width: 110px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main .container .timer .text #city-timer {
+  font-size: 30px;
+  font-weight: 600;
+}
+/*# sourceMappingURL=styles.css.map */
