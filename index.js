@@ -1,5 +1,11 @@
 window.onload = async () => {
-  // GETTING NEAREST CITY
+  // GETTING USER'S LOCATION
+  let i = 0;
+  for (const key1 in data) {
+    data[key1].splice(1, 0, ...data2[key1].splice(0, 8));
+
+    i += 1;
+  }
 
   const getCoords = async () => {
     const pos = await new Promise((resolve, reject) => {
@@ -16,36 +22,50 @@ window.onload = async () => {
 
   let loc1 = await getCoords();
 
+  // alert(navigator.geolocation);
+
   if (!navigator.geolocation) {
     alert("Geolocation is not supported by this browser.");
   }
 
-  function showPosition(position) {
-    lat2 = position.coords.latitude;
-    lon2 = position.coords.longitude;
-  }
+  // GETTING DISTANCE FROM ALL AVAILABLE CITIES
 
   for (const key in data) {
     let loc2 = { lat: data[key][0].lon, lon: data[key][0].lat };
     nearestArr.push({
       city: key,
-      // haversine: +Haversine(+loc1.lat, +loc1.lon, +loc2.lat, +loc2.lon),
       distance: +calDistance(+loc1.lat, +loc2.lat, +loc2.lon, loc1.lon),
       lat: loc2.lat,
       lon: loc2.lon,
     });
   }
 
+  // GETTING THE NEAREST CITY
+
   let nearestCity = nearestArr.reduce((prev, curr) =>
     prev.distance < curr.distance ? prev : curr
   );
+
+  // UPDATING THE CITY NAME IN UI
 
   document.getElementById("city-name").innerHTML = nearestCity.city;
 
   // CREATING THE ACTUAL TIMER
 
-  let countryCal = data[nearestCity.city];
-  let dayData = countryCal[0];
+  let cityCal = data[nearestCity.city];
+
+  const foundIndex = cityCal.findIndex((el, idx) => {
+    if (idx === 0) return false;
+    const d1Time = new Date(el.date + " " + el.seher).getTime();
+    const d2Time = new Date(el.date + " " + el.iftar).getTime();
+    const d3Time = new Date().getTime();
+
+    const distanceFromSeher = d1Time - d3Time;
+    const distanceFromIFtar = d2Time - d3Time;
+
+    return distanceFromSeher > 0 || distanceFromIFtar > 0;
+  });
+  let dayData = cityCal[foundIndex];
   let seherTime = dayData.seher.split(" AM")[0];
   let iftarTime = dayData.iftar.split(" PM")[0];
   let calDate = dayData.date;
@@ -71,8 +91,8 @@ window.onload = async () => {
   let seherElement = document.getElementById("seher-timer");
   let iftarElement = document.getElementById("iftar-timer");
 
-  createTimer(seherTimeObj, seherElement);
-  // createTimer(iftarTimeObj, iftarElement);
+  createTimer(seherTimeObj, seherElement, "REMAINING FOR SEHER");
+  createTimer(iftarTimeObj, iftarElement, "REMAINING FOR IFTAR");
 
   setInterval(function () {
     let now = new Date();
@@ -90,7 +110,7 @@ window.onload = async () => {
     return [days, hours, minutes, seconds];
   }
 
-  function createTimer(time, element) {
+  function createTimer(time, element, text) {
     // Set the date we're counting down to
     let countDownDate = new Date(time).getTime();
 
@@ -108,24 +128,29 @@ window.onload = async () => {
       // element.innerHTML =
       //   days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
       element.innerHTML = `
-      <div>
-        <span class='hours'>${hours}</span>
-        <div class='smalltext'>Hours</div>
+      <div class='timer'>
+        <div>
+          <span class='hours'>${hours}</span>
+          <div class='smalltext'>Hours</div>
+        </div>
+        <div>
+          <span class='hours'>${minutes}</span>
+          <div class='smalltext'>minutes</div>
+        </div>
+        <div>
+          <span class='hours'>${seconds}</span>
+          <div class='smalltext'>seconds</div>
+        </div>
       </div>
-      <div>
-        <span class='hours'>${minutes}</span>
-        <div class='smalltext'>minutes</div>
-      </div>
-      <div>
-        <span class='hours'>${seconds}</span>
-        <div class='smalltext'>seconds</div>
-      </div>
+      <div class='line'>${text}</div>
       `;
       days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
       // 15 MIN FUNCTIONALITY
 
-      // if (minutes > 14) {
+      // if (hours > 0) {
+      //   element.style.display = "none";
+      // } else if (minutes > 14) {
       //   element.style.display = "none";
       // } else {
       //   element.style.display = "block";
